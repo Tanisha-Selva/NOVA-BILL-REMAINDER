@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# 🔔 NOVA Bill Reminder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**NOVA Bill Reminder** is a smart utility tracking and bill management web application. Designed for efficiency and seamless organization, it allows users to track upcoming bills, secure their accounts with robust identity management, and store bill receipts safely in the cloud.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🛠️ Integrated Services & Tech Stack
 
-### `npm start`
+### **1. Frontend & User Authentication**
+* **React.js:** Dynamic and responsive user interface for managing bill items, tracking payment statuses, and navigating reminders.
+* **Auth0:** Enterprise-grade identity provider handling user authentication, secure sign-ups, and session management.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### **2. Backend & API Services**
+* **Express.js (Node.js):** RESTful backend API handling core utility operations, client requests, and integrations.
+* **Vercel Serverless Functions:** Deployed endpoint routes ensuring scalable, serverless execution.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### **3. Database & Cloud Storage**
+* **MongoDB Atlas (via Mongoose):** Cloud document database storing user profiles, bill schedules, due dates, and metadata securely.
+* **Dropbox SDK:** Cloud file storage handling receipt image and document uploads safely via API integration.
 
-### `npm test`
+### **4. Hosting & Deployment**
+* **Vercel:** CI/CD production hosting platform delivering lightning-fast client delivery and serverless API routing.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🔐 Security & Best Practices
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* **Zero Hardcoded Credentials:** Sensitive parameters and connection keys are excluded from version control using `.gitignore`.
+* **Environment-Isolated Secrets:** Local development uses secure `.env` properties, while production environments leverage Vercel's encrypted environment variables.
+* **Token-Based Auth:** Secure protocol routing through Auth0 ensures restricted access to private user data.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ⚙️ Environment Variables Setup
 
-### `npm run eject`
+Configure the following key-value pairs in your `.env` file for local development or within the **Vercel Project Settings > Environment Variables**:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Variable Key | Type | Description |
+| :--- | :--- | :--- |
+| `MONGODB_URI` | Secret | Connection string for MongoDB Atlas database |
+| `DROPBOX_ACCESS_TOKEN` | Secret | Access token for Dropbox API receipt uploads |
+| `REACT_APP_AUTH0_DOMAIN` | Config | Your Auth0 tenant domain (e.g., `dev-xxxx.us.auth0.com`) |
+| `REACT_APP_AUTH0_CLIENT_ID` | Config | Your Auth0 Application Client ID |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🔑 Auth0 Dashboard Configuration
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To ensure successful authentication on live deployments and local development, register the following paths under your Auth0 Application Settings (**Applications > Applications > NOVA Bill Reminder > Application URIs**):
 
-## Learn More
+* **Allowed Callback URLs:**
+  ```text
+  http://localhost:3000, http://localhost:5001, https://nova-bill-remainder.vercel.app, https://nova-bill-remainder.vercel.app/
+  ```
+* **Allowed Logout URLs:**
+  ```text
+  http://localhost:3000, http://localhost:5001, https://nova-bill-remainder.vercel.app
+  ```
+* **Allowed Web Origins:**
+  ```text
+  http://localhost:3000, http://localhost:5001, https://nova-bill-remainder.vercel.app
+  ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🚀 Getting Started Locally
 
-### Code Splitting
+### Prerequisites
+* **Node.js** (v18 or higher)
+* **npm** or **yarn**
+* **MongoDB Atlas** cluster instance
+* **Dropbox App** registered on the Dropbox Developer Console
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Tanisha-Selva/NOVA-BILL-REMAINDER.git
+cd NOVA-BILL-REMAINDER
+```
 
-### Analyzing the Bundle Size
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 3. Configure Environment Variables
+Create a `.env` file in the root directory:
+```env
+MONGODB_URI=your_mongodb_connection_string
+DROPBOX_ACCESS_TOKEN=your_dropbox_access_token
+REACT_APP_AUTH0_DOMAIN=your_auth0_domain
+REACT_APP_AUTH0_CLIENT_ID=your_auth0_client_id
+```
 
-### Making a Progressive Web App
+### 4. Run the Application
+```bash
+npm run dev
+# or
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## ☁️ Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The application is deployed live on **Vercel**:
+1. Import the project repository into your Vercel Dashboard.
+2. Add production environment variables (`MONGODB_URI`, `DROPBOX_ACCESS_TOKEN`, `REACT_APP_AUTH0_DOMAIN`, `REACT_APP_AUTH0_CLIENT_ID`) under **Settings > Environment Variables**.
+3. Ensure your production and preview Vercel URLs are registered under your **Auth0 Application Allowed Callback, Logout, and Web Origins URLs**.
+4. Trigger deployment via Git push or Vercel Dashboard redeploy.
