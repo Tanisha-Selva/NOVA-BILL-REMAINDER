@@ -12,7 +12,7 @@ const Dashboard = () => {
   const [receiptFile, setReceiptFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const BACKEND_URL = 'http://localhost:5000/api/bills';
+  const BACKEND_URL = '/api/bills';
 
   // Fetch saved bills from MongoDB Atlas on component mount / user login
   useEffect(() => {
