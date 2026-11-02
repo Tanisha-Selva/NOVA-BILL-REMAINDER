@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
 
 function App() {
+  const { isAuthenticated, isLoading } = useAuth0();
+
+  if (isLoading) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        background: '#0f172a',
+        color: '#ffffff',
+        fontFamily: 'sans-serif'
+      }}>
+        <h2>Loading NOVA...</h2>
+      </div>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {!isAuthenticated ? <Login /> : <Dashboard />}
     </div>
   );
 }
